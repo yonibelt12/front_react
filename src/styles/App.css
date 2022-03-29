@@ -1,0 +1,12 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: whitesmoke;
+    font-family: "Rubik", sans-serif;
+    color: #353737;
+    padding: 8em 0 5em 0;
+}
