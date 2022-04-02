@@ -9,6 +9,7 @@ module.exports = {
         filename: 'bundle.js',
         publicPath: '/'
     },
+    devtool: "eval-cheap-source-map",
     mode: 'development',
     resolve: {
         extensions: ['.js', '.jsx'],
@@ -44,7 +45,7 @@ module.exports = {
             {
                 test: /\.(png|svg|jpg|gif)$/,
                 type: 'asset',
-            }
+            },
         ]
     },
     plugins: [

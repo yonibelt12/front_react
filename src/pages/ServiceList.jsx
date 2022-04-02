@@ -1,10 +1,12 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import ServiceDetail from '../components/ServiceDetail';
+import AppContext from "../context/AppContext";
 
 import endpoints from '../settings/endpoints';
 import '../styles/ServiceList.css';
 
 const ServiceList = () => {
+    const {updateServiceList} = useContext(AppContext);
     const [list, setList] = useState([]);
     useEffect(() => {
         const url = endpoints.characterEndpoint;
@@ -17,8 +19,9 @@ const ServiceList = () => {
                 
                 if (Array.isArray(data) && data.length >= 1) {
                     const finalResult = data;
-                    console.log(finalResult);
+                    //console.log(finalResult);
                     setList(finalResult);
+                    updateServiceList(finalResult);
                 } else {
                     setList([]);
                 }
@@ -39,9 +42,9 @@ const ServiceList = () => {
           
           <div className="items-body">
 
-          {(()=>{
+            {(()=>{
                     const options = list.map(m=>{
-                        return <ServiceDetail nombre={m.nombre} key={m.id} ></ServiceDetail>
+                        return <ServiceDetail nombre={m.nombre} id={m.id} key={m.id} vbase={m.vbase} tolerancia={m.tolerancia}></ServiceDetail>
                       });
  
                     return options;
